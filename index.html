@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Even Odd Lists</h1>
+<hr/>
+
+<form id="even-odd-form" autocomplete="off" target="_blank">
+    <div>
+        <label for="Word">Word:</label>
+        <input type="text" name="Word" id="Word"  placeholder="what's your word?" onkeyup="updateWord(this)">
+    </div>
+    <div>
+        <input type="button" value="Even or Odd?" onclick="handleSubmit()">
+    </div>
+</form>
+<section id="even-list" class="even-list">
+    <h2>Even</h2>
+    <ul id="even"></ul>
+</section>
+<section id="odd-list" class="odd-list">
+    <h2>Odd</h2>
+    <ul id="odd"></ul>
+</section>
+
+<script>
+    let usersWord = ""
+    let oddList = document.getElementById("odd")
+    let evenList = document.getElementById("even")
+    function updateWord(element) {
+        usersWord = element.value
+
+        console.log(usersWord)
+    }
+    function handleSubmit() {
+        let newListItem = document.createElement('LI')
+        newListItem.innerText = usersWord
+
+        if(usersWord.length % 2 === 0) {
+            evenList.appendChild(newListItem)
+        } else {
+            oddList.appendChild(newListItem)
+        }
+
+        usersWord = ""
+        document.getElementById("even-odd-form").reset()
+    }
+</script>
+</body>
+</html>
